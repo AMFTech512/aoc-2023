@@ -42,5 +42,5 @@ fn main() {
 
     let lines = read_input("input.txt");
     let sum = lines.fold(0, |acc, x| acc + compute_calibration(x.unwrap().as_str()));
-    println!("{}", sum);
+    println!("Sum: {}", sum);
 }
