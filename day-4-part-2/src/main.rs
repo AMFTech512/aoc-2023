@@ -104,6 +104,7 @@ fn main() {
     // stores the number of matches and number of cards for each card
     let mut card_map: HashMap<u32, (u32, u32)> = HashMap::new();
 
+    // populate the card map
     for line in lines {
         let card_number = get_card_number(&line.as_ref().unwrap());
         let winning_numbers = get_winning_numbers(&line.as_ref().unwrap());
@@ -113,12 +114,14 @@ fn main() {
         card_map.insert(card_number, (num_matches, 0));
     }
 
+    // count all of the cards
     for card_num in 1..=card_map.len() {
         count_cards(&mut card_map, card_num as u32);
     }
 
     // dbg!(&card_map);
 
+    // compute the total number of cards
     let total = card_map
         .iter()
         .fold(0, |acc, (_, (_num_matches, num_cards))| acc + num_cards);
